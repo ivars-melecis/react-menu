@@ -1,26 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Fragment } from 'react';
+import './app.scss';
+import './components/menu/menu.scss';
+import MenuList from './components/menu/MenuList.jsx';
+import { menu, nest } from './services/MenuService';
+import SvgSprite from './components/SvgSprite';
 
-function App() {
+const App = () => {
+  const customMenuClasses = {
+    hasSub: 'has-sub',
+    hasNoSub: 'no-sub',
+    subArrow: 'menu-arrow',
+    subSpan: 'sub-title',
+    ul: 'list',
+    li: 'list-item',
+    a: 'list-item-link'
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Fragment>
+      <SvgSprite />
+      <nav className='main-menu bar-menu'>
+        <MenuList list={nest(menu)} subMenuIcon={'#down-chevron'} customClasses={customMenuClasses} markLevel={'submenu-'} />
+      </nav>
+    </Fragment>
   );
-}
+};
 
 export default App;

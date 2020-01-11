@@ -1,68 +1,55 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# React Menu
 
-## Available Scripts
+This component can populate Menu tree recursively from flat array:
 
-In the project directory, you can run:
+```bash
+  {
+    id: 1, // Id of item
+    title: 'Home',
+    slug: 'home', // optional
+    parent: null, // null is topic, id - parent page id
+    archived: false
+  },
+  {
+    id: 2,
+    title: 'About Us',
+    slug: 'about-us',
+    parent: 2, // this page is child of Home
+    archived: false
+  },
+```
+Component creates nested list with key of `children` recursively - this way creating nested array. 
 
-### `npm start`
+React component takes nested array and builds set of `ul's` and `li's`.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Component allows to add/ override class names using `customClasses` prop.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+Available Classes:
 
-### `npm test`
+```bash
+  {
+   hasSub: 'has-sub', // li that has sub menu
+   hasNoSub: 'no-sub', // li that hasnt got submenu
+   subArrow: 'menu-arrow', // class name to icon span if subMenuIcon is set
+   subSpan: 'sub-title', // text is wrapped with span if subMenuIcon is set. class for that
+   ul: 'list', // each ul
+   li: 'list-item', // each li
+   a: 'list-item-link' // each a
+  }
+```
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+`subMenuIcon` prop allows to inject icon into li a which has nested list. This prop accepts string which is id of desired icon. for example `#chevron-down`;
 
-### `npm run build`
+You can also mark every level with counted class.
+pass prop `markLevel` with a string ( prefix of count ).
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+For example:
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+`<MenuList markLevel={'submenu-'}>` will add class name submenu-1 to first level ul , submenu-2 to second level etc.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Sample of Usage with full list of props:
 
-### `npm run eject`
+```bash
+  <MenuList list={menu} depth={3} subMenuIcon={'#down-chevron'} markLevel={'submenu-'} />
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify

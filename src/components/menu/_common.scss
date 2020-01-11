@@ -1,0 +1,37 @@
+$menuBg: teal;
+$menuColour: #fff;
+
+.main-menu {
+  position: relative;
+  box-sizing: border-box;
+}
+
+.main-menu > ul {
+  display: flex;
+  background: $menuBg;
+}
+
+.main-menu ul li {
+  position: relative;
+  &:focus > a,
+  &:hover > a {
+    background: darken($menuBg, 5%);
+  }
+}
+
+.main-menu ul li a {
+  box-sizing: border-box;
+  text-decoration: none;
+  color: $menuColour;
+  transition: ease 0.2s background;
+  font-size: 1.8rem;
+}
+
+.main-menu ul ul li a {
+  font-size: 1.6rem;
+}
+
+.main-menu > ul ul {
+  display: none;
+  background: darken($menuBg, 2%);
+}
