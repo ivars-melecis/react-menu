@@ -47,6 +47,9 @@ For example:
 
 `<MenuList markLevel={'submenu-'}>` will add class name submenu-1 to first level ul , submenu-2 to second level etc.
 
+
+You can control depth of rendered list by passing prop `depth` with desired amount of levels. (`depth={2}` will populate ul and ul ul)
+
 ## Sample of Usage with full list of props:
 
 ```bash

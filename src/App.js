@@ -20,7 +20,7 @@ const App = () => {
     <Fragment>
       <SvgSprite />
       <nav className='main-menu bar-menu'>
-        <MenuList list={nest(menu)} subMenuIcon={'#down-chevron'} customClasses={customMenuClasses} markLevel={'submenu-'} />
+        <MenuList list={nest(menu)} subMenuIcon={'#down-chevron'} depth={3} customClasses={customMenuClasses} markLevel={'submenu-'} />
       </nav>
     </Fragment>
   );

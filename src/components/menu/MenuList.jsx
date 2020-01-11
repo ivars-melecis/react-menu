@@ -63,7 +63,7 @@ const MenuList = props => {
         let subClass = hasChildren ? classes['hasSub'] : classes['hasNoSub'];
         return (
           <li key={item.id} className={subClass}>
-            {hasChildren ? (
+            {hasChildren && currDepth !== depth - 1 ? (
               renderIcon(item)
             ) : (
               <a href={item.slug} className={classes['a']}>
